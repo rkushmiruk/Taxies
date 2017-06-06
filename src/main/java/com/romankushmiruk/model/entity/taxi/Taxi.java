@@ -10,42 +10,23 @@ public class Taxi extends Car {
     private Integer payPerKm;
     private Boolean isBusy;
     private Integer cost;
+    private Boolean hasConditioner;
 
-    public Taxi(TaxiBuilder builder){
-        super(builder.mark,builder.engineCapacity,builder.fuelPerHour,builder.yearOfIssue,builder.speed);
+    public Taxi(TaxiBuilder builder) {
+        super(builder.mark, builder.engineCapacity, builder.fuelPerHour, builder.yearOfIssue, builder.speed);
         isBusy = false;
-    }
-
-    public TaxiCategory getTaxiCategory() {
-        return taxiCategory;
     }
 
     public void setTaxiCategory(TaxiCategory taxiCategory) {
         this.taxiCategory = taxiCategory;
     }
 
-    public Integer getStartPay() {
-        return startPay;
-    }
-
     public void setStartPay(Integer startPay) {
         this.startPay = startPay;
     }
 
-    public Integer getPayPerKm() {
-        return payPerKm;
-    }
-
     public void setPayPerKm(Integer payPerKm) {
         this.payPerKm = payPerKm;
-    }
-
-    public Boolean getBusy() {
-        return isBusy;
-    }
-
-    public void setBusy(Boolean busy) {
-        isBusy = busy;
     }
 
     public Integer getCost() {
@@ -54,6 +35,10 @@ public class Taxi extends Car {
 
     public void setCost(Integer cost) {
         this.cost = cost;
+    }
+
+    public void setConditioner(Boolean hasConditioner) {
+        this.hasConditioner = hasConditioner;
     }
 
     @Override
@@ -81,11 +66,18 @@ public class Taxi extends Car {
     @Override
     public String toString() {
 
-        return "Taxi {" + super.toString()+
-                "category="+taxiCategory+
-                "startPay=" + startPay +
-                ", payPerKm=" + payPerKm +
-                ", cost="+cost+
-                '}';
+        return new StringBuilder().append("Taxi {").
+                append(super.toString())
+                .append(" , category=")
+                .append(taxiCategory)
+                .append(" , startPay=")
+                .append(startPay)
+                .append(", payPerKm=")
+                .append(payPerKm)
+                .append(", cost=")
+                .append(cost)
+                .append(", Conditioner=")
+                .append(hasConditioner)
+                .append('}').toString();
     }
 }

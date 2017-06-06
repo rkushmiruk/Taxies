@@ -7,7 +7,8 @@ public class TaxiFactory {
     private static TaxiBuilder taxiBuilder;
     private static Taxi taxi;
 
-    public static Taxi createTaxi(TaxiCategory category, String mark, Integer engineCapacity, Integer yearOfIssue, Integer fuelPerHour, Integer speed,Integer cost) {
+    public static Taxi createTaxi(TaxiCategory category, String mark, Integer engineCapacity,
+                                  Integer yearOfIssue, Integer fuelPerKm, Integer speed, Integer cost) {
         switch (category) {
             case ECONOMY:
                 taxiBuilder = new EconomyTaxiBuilder();
@@ -30,12 +31,12 @@ public class TaxiFactory {
                 .mark(mark)
                 .engineCapacity(engineCapacity)
                 .yearOfIssue(yearOfIssue)
-                .fuelPerHour(fuelPerHour)
+                .fuelPerKm(fuelPerKm)
                 .speed(speed)
                 .cost(cost)
-                .buildTaxiCategory()
                 .buildPayPerKm()
                 .buildStartPay()
+                .hasCondition()
                 .buildCarClazz();
 
         return taxi;

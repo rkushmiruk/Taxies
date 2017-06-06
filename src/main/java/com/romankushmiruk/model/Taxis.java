@@ -1,13 +1,17 @@
 package com.romankushmiruk.model;
 
+import com.romankushmiruk.model.entity.factory.TaxiCategory;
+
 import com.romankushmiruk.model.entity.taxi.*;
-
-
+import com.romankushmiruk.util.iterator.Aggregate;
+import com.romankushmiruk.util.iterator.CustomIterator;
+import com.romankushmiruk.util.iterator.TaxiIterator;
+import com.romankushmiruk.util.TaxiScanner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Taxis {
+public class Taxis implements Aggregate {
     private List<Taxi> economyTaxis = new ArrayList<>();
     private List<Taxi> comfortTaxis = new ArrayList<>();
     private List<Taxi> businessTaxis = new ArrayList<>();
@@ -25,8 +29,16 @@ public class Taxis {
         return TaxisHolder.INSTANCE;
     }
 
-    public void addTaxi(Taxi taxi) {
-        switch (taxi.getTaxiCategory()) {
+    @Override
+    public CustomIterator createIterator() {
+        CustomIterator iterator = new TaxiIterator(this);
+        iterator.first();
+        return iterator;
+    }
+
+    public void addTaxi(TaxiCategory category) {
+        Taxi taxi = TaxiScanner.createTaxi(category);
+        switch (category) {
             case ECONOMY:
                 economyTaxis.add(taxi);
                 break;
@@ -43,33 +55,30 @@ public class Taxis {
         allTaxis.add(taxi);
     }
 
-    public Integer taxisCost() {
+
+    public Integer getTaxisCost() {
         int cost = 0;
-        for (Taxi economyTaxi : economyTaxis) {
-            cost += economyTaxi.getCost();
-        }
-        for (Taxi comfortTaxi : comfortTaxis) {
-            cost += comfortTaxi.getCost();
-        }
-        for (Taxi businessTaxi : businessTaxis) {
-            cost += businessTaxi.getCost();
-        }
-        for (Taxi premiumTaxi : premiumTaxis) {
-            cost += premiumTaxi.getCost();
+        for (Taxi taxi : allTaxis) {
+            cost += taxi.getCost();
         }
         return cost;
     }
 
-    public void sortTaxi() {
-
+    public void sortTaxi(List<Taxi> taxiList) {
+        CustomIterator iterator = createIterator();
+        iterator.sortList(taxiList);
     }
 
-    public List<Taxi> searchBetweenSpeed(Integer start,Integer end){
+
+    public List<Taxi> searchBetweenSpeed(Integer start, Integer end) {
         List<Taxi> taxis = new ArrayList<>();
-        for(Taxi taxi: allTaxis){
-            if(start<=taxi.getSpeed()&& taxi.getSpeed()>=end){
-                taxis.add(taxi);
+        CustomIterator iterator = createIterator();
+
+        while (!iterator.isDone()) {
+            if (iterator.currentItem().getSpeed() >= start && iterator.currentItem().getSpeed() <= end) {
+                taxis.add(iterator.currentItem());
             }
+            iterator.next();
         }
         return taxis;
     }

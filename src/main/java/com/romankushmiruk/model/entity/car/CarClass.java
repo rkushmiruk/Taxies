@@ -1,6 +1,6 @@
 package com.romankushmiruk.model.entity.car;
 
-import static com.romankushmiruk.util.EngineCapacity.*;
+import static com.romankushmiruk.util.constants.EngineCapacity.*;
 
 public enum CarClass {
     B1, B2, B3, B4;

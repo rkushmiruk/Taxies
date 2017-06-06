@@ -11,6 +11,7 @@ public abstract class TaxiBuilder {
     public Integer yearOfIssue;
     public Integer speed;
     public Integer cost;
+    public Boolean hasCondition;
 
     public Taxi getTaxi() {
         return taxi;
@@ -21,8 +22,9 @@ public abstract class TaxiBuilder {
         return this;
     }
 
-    public void buildCarClazz() {
+    public TaxiBuilder buildCarClazz() {
         taxi.setCarClazz(CarClass.getCarClazz(taxi.getEngineCapacity()));
+        return this;
     }
 
     public TaxiBuilder mark(String mark) {
@@ -35,9 +37,10 @@ public abstract class TaxiBuilder {
         return this;
     }
 
-    public TaxiBuilder fuelPerHour(Integer fuelPerHour) {
-        taxi.setFuelPerHour(fuelPerHour);
+    public TaxiBuilder fuelPerKm(Integer fuelPerKm) {
+        taxi.setFuelPerHour(fuelPerKm);
         return this;
+
     }
 
     public TaxiBuilder yearOfIssue(Integer yearOfIssue) {
@@ -50,15 +53,15 @@ public abstract class TaxiBuilder {
         return this;
     }
 
-    public TaxiBuilder cost(Integer cost){
+    public TaxiBuilder cost(Integer cost) {
         taxi.setCost(cost);
         return this;
     }
 
+    public abstract TaxiBuilder hasCondition();
+
     public abstract TaxiBuilder buildStartPay();
 
     public abstract TaxiBuilder buildPayPerKm();
-
-    public abstract TaxiBuilder buildTaxiCategory();
 
 }

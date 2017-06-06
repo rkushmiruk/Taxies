@@ -4,20 +4,16 @@ public abstract class Car {
     private String mark;
     private Integer engineCapacity;
     private CarClass carClazz;
-    private Integer fuelPerHour;
+    private Integer fuelPerKm;
     private Integer yearOfIssue;
     private Integer speed;
 
-    public Car(String mark, Integer engineCapacity, Integer fuelPerHour, Integer yearOfIssue, Integer speed) {
+    public Car(String mark, Integer engineCapacity, Integer fuelPerKm, Integer yearOfIssue, Integer speed) {
         this.mark = mark;
         this.engineCapacity = engineCapacity;
-        this.fuelPerHour = fuelPerHour;
+        this.fuelPerKm = fuelPerKm;
         this.yearOfIssue = yearOfIssue;
         this.speed = speed;
-    }
-
-    public String getMark() {
-        return mark;
     }
 
     public void setMark(String mark) {
@@ -32,24 +28,16 @@ public abstract class Car {
         this.engineCapacity = engineCapacity;
     }
 
-    public CarClass getCarClazz() {
-        return carClazz;
-    }
-
     public void setCarClazz(CarClass carClazz) {
         this.carClazz = carClazz;
     }
 
-    public Integer getFuelPerHour() {
-        return fuelPerHour;
+    public Integer getFuelPerKm() {
+        return fuelPerKm;
     }
 
     public void setFuelPerHour(Integer fuelPerHour) {
-        this.fuelPerHour = fuelPerHour;
-    }
-
-    public Integer getYearOfIssue() {
-        return yearOfIssue;
+        this.fuelPerKm = fuelPerHour;
     }
 
     public void setYearOfIssue(Integer yearOfIssue) {
@@ -75,7 +63,7 @@ public abstract class Car {
         if (engineCapacity != null ? !engineCapacity.equals(car.engineCapacity) : car.engineCapacity != null)
             return false;
         if (carClazz != car.carClazz) return false;
-        if (fuelPerHour != null ? !fuelPerHour.equals(car.fuelPerHour) : car.fuelPerHour != null) return false;
+        if (fuelPerKm != null ? !fuelPerKm.equals(car.fuelPerKm) : car.fuelPerKm != null) return false;
         if (yearOfIssue != null ? !yearOfIssue.equals(car.yearOfIssue) : car.yearOfIssue != null) return false;
         return speed != null ? speed.equals(car.speed) : car.speed == null;
     }
@@ -85,7 +73,7 @@ public abstract class Car {
         int result = mark != null ? mark.hashCode() : 0;
         result = 67 * result + (engineCapacity != null ? engineCapacity.hashCode() : 0);
         result = 67 * result + (carClazz != null ? carClazz.hashCode() : 0);
-        result = 67 * result + (fuelPerHour != null ? fuelPerHour.hashCode() : 0);
+        result = 67 * result + (fuelPerKm != null ? fuelPerKm.hashCode() : 0);
         result = 67 * result + (yearOfIssue != null ? yearOfIssue.hashCode() : 0);
         result = 67 * result + (speed != null ? speed.hashCode() : 0);
         return result;
@@ -94,12 +82,18 @@ public abstract class Car {
     @Override
     public String toString() {
 
-        return "mark='" + mark + '\'' +
-                ", engineCapacity=" + engineCapacity +
-                ", carClazz=" + carClazz +
-                ", fuelPerHour=" + fuelPerHour +
-                ", yearOfIssue=" + yearOfIssue +
-                ", speed=" + speed +
-                '}';
+        return new StringBuilder()
+                .append("mark='")
+                .append(mark)
+                .append('\'')
+                .append(", engineCapacity=")
+                .append(engineCapacity)
+                .append(", carClazz=")
+                .append(carClazz)
+                .append(", fuelPerKm=")
+                .append(fuelPerKm).append(", yearOfIssue=")
+                .append(yearOfIssue)
+                .append(", speed=")
+                .append(speed).toString();
     }
 }

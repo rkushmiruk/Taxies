@@ -1,11 +1,14 @@
 package com.romankushmiruk.model.entity.taxi.builder;
 
-
-import com.romankushmiruk.model.entity.factory.TaxiCategory;
-
-import static com.romankushmiruk.util.Rate.*;
+import static com.romankushmiruk.util.constants.Rate.*;
 
 public class PremiumTaxiBuilder extends TaxiBuilder {
+    @Override
+    public TaxiBuilder hasCondition() {
+        taxi.setConditioner(true);
+        return this;
+    }
+
     @Override
     public TaxiBuilder buildStartPay() {
         taxi.setStartPay(PREMIUM_TAXI_START_RATE);
@@ -18,9 +21,4 @@ public class PremiumTaxiBuilder extends TaxiBuilder {
         return this;
     }
 
-    @Override
-    public TaxiBuilder buildTaxiCategory() {
-        taxi.setTaxiCategory(TaxiCategory.PREMIUM);
-        return this;
-    }
 }
