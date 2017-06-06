@@ -1,4 +1,4 @@
-package com.romankushmiruk.util;
+package com.romankushmiruk.util.constants;
 
 import java.util.ResourceBundle;
 
