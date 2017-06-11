@@ -11,12 +11,14 @@ public class Main {
 
         controller.initTaxis();
 
+        System.out.println();
+
         System.out.println(controller.getTaxisCost());
 
         controller.sortTaxis(taxis.getAllTaxis());
         System.out.println(taxis.getAllTaxis());
 
-        System.out.println(controller.searchTaxiBetweenSpeed(15, 300));
+        System.out.println(controller.searchTaxiBetweenSpeed(2, 300));
 
     }
 }

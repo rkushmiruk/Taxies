@@ -8,27 +8,12 @@ public abstract class Car {
     private Integer yearOfIssue;
     private Integer speed;
 
-    public Car(String mark, Integer engineCapacity, Integer fuelPerKm, Integer yearOfIssue, Integer speed) {
+    public Car(String mark, Integer engineCapacity, Integer fuelPerKm, Integer yearOfIssue, Integer speed, CarClass carClazz) {
         this.mark = mark;
         this.engineCapacity = engineCapacity;
         this.fuelPerKm = fuelPerKm;
         this.yearOfIssue = yearOfIssue;
         this.speed = speed;
-    }
-
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
-    public Integer getEngineCapacity() {
-        return engineCapacity;
-    }
-
-    public void setEngineCapacity(Integer engineCapacity) {
-        this.engineCapacity = engineCapacity;
-    }
-
-    public void setCarClazz(CarClass carClazz) {
         this.carClazz = carClazz;
     }
 
@@ -36,20 +21,12 @@ public abstract class Car {
         return fuelPerKm;
     }
 
-    public void setFuelPerHour(Integer fuelPerHour) {
-        this.fuelPerKm = fuelPerHour;
-    }
-
-    public void setYearOfIssue(Integer yearOfIssue) {
-        this.yearOfIssue = yearOfIssue;
+    public void setFuelPerKm(Integer fuelPerKm) {
+        this.fuelPerKm = fuelPerKm;
     }
 
     public Integer getSpeed() {
         return speed;
-    }
-
-    public void setSpeed(Integer speed) {
-        this.speed = speed;
     }
 
     @Override

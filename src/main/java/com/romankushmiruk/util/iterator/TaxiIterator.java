@@ -27,9 +27,9 @@ public class TaxiIterator implements CustomIterator {
         for (int i = list.size() - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (list.get(j).getFuelPerKm() > list.get(j + 1).getFuelPerKm()) {
-                    int t = list.get(j).getFuelPerKm();
-                    list.get(j).setFuelPerHour(list.get(j + 1).getFuelPerKm());
-                    list.get(j + 1).setFuelPerHour(t);
+                    int temp = list.get(j).getFuelPerKm();
+                    list.get(j).setFuelPerKm(list.get(j + 1).getFuelPerKm());
+                    list.get(j + 1).setFuelPerKm(temp);
                 }
             }
         }

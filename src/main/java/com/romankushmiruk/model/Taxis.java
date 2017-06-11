@@ -1,12 +1,9 @@
 package com.romankushmiruk.model;
 
-import com.romankushmiruk.model.entity.factory.TaxiCategory;
-
 import com.romankushmiruk.model.entity.taxi.*;
 import com.romankushmiruk.util.iterator.Aggregate;
 import com.romankushmiruk.util.iterator.CustomIterator;
 import com.romankushmiruk.util.iterator.TaxiIterator;
-import com.romankushmiruk.util.TaxiScanner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +33,8 @@ public class Taxis implements Aggregate {
         return iterator;
     }
 
-    public void addTaxi(TaxiCategory category) {
-        Taxi taxi = TaxiScanner.createTaxi(category);
-        switch (category) {
+    public void addTaxi(Taxi taxi) {
+        switch (taxi.getTaxiCategory()) {
             case ECONOMY:
                 economyTaxis.add(taxi);
                 break;

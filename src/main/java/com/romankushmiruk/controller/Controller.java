@@ -2,21 +2,36 @@ package com.romankushmiruk.controller;
 
 import com.romankushmiruk.model.Taxis;
 import com.romankushmiruk.model.entity.factory.TaxiCategory;
+import com.romankushmiruk.model.entity.factory.TaxiFactory;
 import com.romankushmiruk.model.entity.taxi.Taxi;
-import com.romankushmiruk.view.View;
+import com.romankushmiruk.model.entity.taxi.builder.TaxiBuilder;
 
 import java.util.List;
 
 public class Controller {
     private Taxis taxis;
+    private TaxiBuilder taxiBuilder;
 
     public Controller(Taxis taxis) {
         this.taxis = taxis;
     }
 
     public void initTaxis() {
-        taxis.addTaxi(TaxiCategory.ECONOMY);
-        taxis.addTaxi(TaxiCategory.BUSINESS);
+        taxiBuilder = TaxiFactory.createTaxiBuilder(TaxiCategory.ECONOMY);
+
+        Taxi taxi = taxiBuilder.mark("Split")
+                .engineCapacity(23)
+                .buildCarClazz()
+                .fuelPerKm(23)
+                .yearOfIssue(1994)
+                .speed(200)
+                .buildStartPay()
+                .buildPayPerKm()
+                .cost(30)
+                .buildCondition()
+                .build();
+
+        taxis.addTaxi(taxi);
     }
 
     public Integer getTaxisCost() {

@@ -1,45 +1,27 @@
 package com.romankushmiruk.model.entity.factory;
 
-import com.romankushmiruk.model.entity.taxi.*;
 import com.romankushmiruk.model.entity.taxi.builder.*;
 
 public class TaxiFactory {
     private static TaxiBuilder taxiBuilder;
-    private static Taxi taxi;
 
-    public static Taxi createTaxi(TaxiCategory category, String mark, Integer engineCapacity,
-                                  Integer yearOfIssue, Integer fuelPerKm, Integer speed, Integer cost) {
+    public static TaxiBuilder createTaxiBuilder(TaxiCategory category) {
         switch (category) {
             case ECONOMY:
                 taxiBuilder = new EconomyTaxiBuilder();
-                taxi = new EconomyTaxi(taxiBuilder);
                 break;
             case COMFORT:
                 taxiBuilder = new ComfortTaxiBuilder();
-                taxi = new ComfortTaxi(taxiBuilder);
                 break;
             case BUSINESS:
                 taxiBuilder = new BusinessTaxiBuilder();
-                taxi = new BusinessTaxi(taxiBuilder);
                 break;
             case PREMIUM:
                 taxiBuilder = new PremiumTaxiBuilder();
-                taxi = new PremiumTaxi(taxiBuilder);
                 break;
         }
-        taxiBuilder.setTaxi(taxi)
-                .mark(mark)
-                .engineCapacity(engineCapacity)
-                .yearOfIssue(yearOfIssue)
-                .fuelPerKm(fuelPerKm)
-                .speed(speed)
-                .cost(cost)
-                .buildPayPerKm()
-                .buildStartPay()
-                .hasCondition()
-                .buildCarClazz();
 
-        return taxi;
+        return taxiBuilder;
     }
 
 }

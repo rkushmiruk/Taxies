@@ -13,7 +13,11 @@ public class Taxi extends Car {
     private Boolean hasConditioner;
 
     public Taxi(TaxiBuilder builder) {
-        super(builder.mark, builder.engineCapacity, builder.fuelPerHour, builder.yearOfIssue, builder.speed);
+        super(builder.mark, builder.engineCapacity, builder.fuelPerKm, builder.yearOfIssue, builder.speed, builder.carClazz);
+        startPay = builder.startPay;
+        payPerKm = builder.payPerKm;
+        cost = builder.cost;
+        hasConditioner = builder.hasCondition;
         isBusy = false;
     }
 
@@ -21,24 +25,12 @@ public class Taxi extends Car {
         this.taxiCategory = taxiCategory;
     }
 
-    public void setStartPay(Integer startPay) {
-        this.startPay = startPay;
-    }
-
-    public void setPayPerKm(Integer payPerKm) {
-        this.payPerKm = payPerKm;
-    }
-
     public Integer getCost() {
         return cost;
     }
 
-    public void setCost(Integer cost) {
-        this.cost = cost;
-    }
-
-    public void setConditioner(Boolean hasConditioner) {
-        this.hasConditioner = hasConditioner;
+    public TaxiCategory getTaxiCategory() {
+        return taxiCategory;
     }
 
     @Override
