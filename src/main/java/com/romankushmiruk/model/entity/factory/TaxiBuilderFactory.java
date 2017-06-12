@@ -2,7 +2,7 @@ package com.romankushmiruk.model.entity.factory;
 
 import com.romankushmiruk.model.entity.taxi.builder.*;
 
-public class TaxiFactory {
+public class TaxiBuilderFactory {
     private static TaxiBuilder taxiBuilder;
 
     public static TaxiBuilder createTaxiBuilder(TaxiCategory category) {

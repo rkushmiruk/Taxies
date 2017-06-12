@@ -1,7 +1,7 @@
 package com.romankushmiruk.util;
 
 import com.romankushmiruk.model.entity.factory.TaxiCategory;
-import com.romankushmiruk.model.entity.factory.TaxiFactory;
+import com.romankushmiruk.model.entity.factory.TaxiBuilderFactory;
 import com.romankushmiruk.model.entity.taxi.Taxi;
 import com.romankushmiruk.model.entity.taxi.builder.TaxiBuilder;
 import com.romankushmiruk.view.View;
@@ -13,7 +13,7 @@ public class TaxiScanner {
     private static TaxiBuilder taxiBuilder;
 
     public static Taxi createTaxi(TaxiCategory category) {
-        taxiBuilder = TaxiFactory.createTaxiBuilder(category);
+        taxiBuilder = TaxiBuilderFactory.createTaxiBuilder(category);
 
         View.printMark();
         String mark = scanner.nextLine();

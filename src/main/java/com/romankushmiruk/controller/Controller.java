@@ -2,7 +2,7 @@ package com.romankushmiruk.controller;
 
 import com.romankushmiruk.model.Taxis;
 import com.romankushmiruk.model.entity.factory.TaxiCategory;
-import com.romankushmiruk.model.entity.factory.TaxiFactory;
+import com.romankushmiruk.model.entity.factory.TaxiBuilderFactory;
 import com.romankushmiruk.model.entity.taxi.Taxi;
 import com.romankushmiruk.model.entity.taxi.builder.TaxiBuilder;
 
@@ -17,7 +17,7 @@ public class Controller {
     }
 
     public void initTaxis() {
-        taxiBuilder = TaxiFactory.createTaxiBuilder(TaxiCategory.ECONOMY);
+        taxiBuilder = TaxiBuilderFactory.createTaxiBuilder(TaxiCategory.ECONOMY);
 
         Taxi taxi = taxiBuilder.mark("Split")
                 .engineCapacity(23)
